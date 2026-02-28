@@ -13,37 +13,39 @@
         select:hover, input:hover { border-color: #10b981; }
     </style>
 </head>
-<body class="h-screen flex overflow-hidden">
+<body class="h-screen flex flex-col lg:flex-row overflow-hidden">
 
-    <div class="flex-1 overflow-y-auto p-8">
-        <div class="max-w-6xl mx-auto glass rounded-[2rem] p-8 shadow-2xl">
+    <div class="flex-1 overflow-y-auto p-4 lg:p-8">
+        <div class="max-w-6xl mx-auto glass rounded-2xl lg:rounded-[2rem] p-5 lg:p-8 shadow-2xl">
             
-            <div class="flex justify-between items-end mb-8 border-b border-slate-700/50 pb-6">
+            <div class="flex flex-col xl:flex-row justify-between items-start xl:items-end gap-4 mb-8 border-b border-slate-700/50 pb-6">
                 <div>
-                    <h1 class="text-3xl font-black bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent mb-1">
+                    <h1 class="text-2xl lg:text-3xl font-black bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent mb-1">
                         CHARACTER ARCHITECT PRO
                     </h1>
                     <p class="text-slate-400 text-sm">Persistent DNA tracking & environmental design.</p>
                 </div>
                 
-                <div class="flex gap-3 items-center bg-slate-900/80 p-3 rounded-xl border border-slate-700">
-                    <select id="presetLoader" onchange="loadPreset()" class="bg-slate-950 border border-slate-700 rounded-lg p-2 text-xs outline-none w-48 text-slate-300">
+                <div class="flex flex-col sm:flex-row gap-3 items-center w-full xl:w-auto bg-slate-900/80 p-3 rounded-xl border border-slate-700">
+                    <select id="presetLoader" onchange="loadPreset()" class="bg-slate-950 border border-slate-700 rounded-lg p-2 text-xs outline-none w-full sm:w-48 text-slate-300">
                         <option value="">-- Load Saved Character --</option>
                     </select>
-                    <button onclick="savePreset()" class="px-3 py-2 bg-emerald-600/20 text-emerald-400 hover:bg-emerald-600 hover:text-white rounded-lg text-xs font-bold transition border border-emerald-500/30">
-                        Save Current
-                    </button>
-                    <button onclick="refreshApp()" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 rounded-lg text-xs font-bold text-slate-300 transition border border-slate-600">
-                        Reset
-                    </button>
+                    <div class="flex gap-2 w-full sm:w-auto">
+                        <button onclick="savePreset()" class="flex-1 sm:flex-none px-3 py-2 bg-emerald-600/20 text-emerald-400 hover:bg-emerald-600 hover:text-white rounded-lg text-xs font-bold transition border border-emerald-500/30 whitespace-nowrap">
+                            Save Current
+                        </button>
+                        <button onclick="refreshApp()" class="flex-1 sm:flex-none px-3 py-2 bg-slate-800 hover:bg-slate-700 rounded-lg text-xs font-bold text-slate-300 transition border border-slate-600">
+                            Refresh
+                        </button>
+                    </div>
                 </div>
             </div>
 
             <div class="space-y-6">
-                <div class="p-6 bg-slate-900/50 rounded-2xl border border-slate-700/50 shadow-inner">
+                <div class="p-4 lg:p-6 bg-slate-900/50 rounded-2xl border border-slate-700/50 shadow-inner">
                     <label class="block text-xs font-bold uppercase tracking-widest text-emerald-400 mb-4">1. Immutable Character DNA</label>
                     
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
                         <div>
                             <label class="block text-[10px] uppercase text-slate-500 mb-1">Age & Gender</label>
                             <select id="demographic" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-sm outline-none">
@@ -95,7 +97,7 @@
                         <div>
                             <label class="block text-[10px] uppercase text-slate-500 mb-1">Eye Color</label>
                             <select id="eyes" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-sm outline-none">
-                                <option value="pale blue">Pale Blue</option>
+                                <option value="pale blue" selected>Pale Blue</option>
                                 <option value="deep brown">Deep Brown</option>
                                 <option value="emerald green">Emerald Green</option>
                                 <option value="striking hazel">Hazel</option>
@@ -137,7 +139,7 @@
                     </div>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 lg:gap-6">
                     <div>
                         <label class="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Artistic Style</label>
                         <select id="artStyle" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm outline-none border-l-2 border-l-blue-500">
@@ -187,8 +189,8 @@
                 </div>
             </div>
 
-            <div class="mt-8 p-5 bg-black/60 rounded-2xl border border-emerald-500/20 relative">
-                <div id="currentOutput" class="text-emerald-50 text-sm leading-relaxed italic min-h-[60px]">
+            <div class="mt-8 p-4 lg:p-5 bg-black/60 rounded-2xl border border-emerald-500/20 relative">
+                <div id="currentOutput" class="text-emerald-50 text-sm leading-relaxed italic min-h-[60px] break-words">
                     Your customized character prompt will appear here...
                 </div>
             </div>
@@ -199,8 +201,8 @@
         </div>
     </div>
 
-    <div class="w-80 bg-slate-900 border-l border-slate-800 flex flex-col h-full shadow-2xl z-10">
-        <div class="p-6 border-b border-slate-800 flex justify-between items-center bg-slate-950">
+    <div class="w-full lg:w-80 bg-slate-900 border-t lg:border-t-0 lg:border-l border-slate-800 flex flex-col h-[35vh] lg:h-full shadow-2xl z-10 shrink-0">
+        <div class="p-4 lg:p-6 border-b border-slate-800 flex justify-between items-center bg-slate-950 sticky top-0">
             <h2 class="text-sm font-bold uppercase tracking-widest text-slate-300">Session History</h2>
         </div>
         <div id="historyList" class="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-hide">
@@ -222,7 +224,7 @@
             const attire = document.getElementById('attire').value;
             const pose = document.getElementById('pose').value;
             const expression = document.getElementById('expression').value;
-            const artStyle = document.getElementById('artStyle').value; // New Variable
+            const artStyle = document.getElementById('artStyle').value;
             
             const envDrop = document.getElementById('environmentDropdown').value;
             const envCustom = document.getElementById('environmentCustom').value;
@@ -230,7 +232,6 @@
 
             const attireText = attire ? ` Wearing ${attire}.` : '';
 
-            // Updated string to utilize the new artStyle variable dynamically
             let prompt = `CHARACTER PORTRAIT: ${pose}. A ${build} ${ethnicity} ${demo} with ${skinTone} skin. They have ${hairStyle} ${hairColor} hair and ${eyes} eyes.${attireText} Expression: ${expression}. Setting: ${env}. Rendered in ${artStyle} --v 6.0`;
 
             document.getElementById('currentOutput').innerText = prompt;
@@ -265,16 +266,16 @@
         function refreshApp() {
             document.querySelectorAll('select').forEach(s => s.selectedIndex = 0);
             document.querySelectorAll('input').forEach(i => i.value = '');
+            // Ensures explicit defaults are reset properly
+            document.getElementById('eyes').value = "pale blue";
             document.getElementById('currentOutput').innerText = 'Your customized character prompt will appear here...';
             document.getElementById('presetLoader').value = "";
         }
 
-        // Preset Logic
         function savePreset() {
             const presetName = prompt("Enter a name to save this character DNA:");
             if (!presetName) return;
 
-            // Notice we only save the core DNA, not the art style, so users can reuse DNA across styles!
             const presetData = {
                 demographic: document.getElementById('demographic').value,
                 ethnicity: document.getElementById('ethnicity').value,
